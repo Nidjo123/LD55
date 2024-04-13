@@ -76,4 +76,4 @@ animation = &"walk"
 speed_scale = 1.5
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position_smoothing_enabled = true
+editor_draw_limits = true

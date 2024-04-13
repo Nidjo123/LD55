@@ -8,12 +8,8 @@ var can_summon_platform = true
 
 func _ready():
 	assert($Cat.active != $Human.active)
-	if $Cat.active:
-		$Cat.add_child(Camera2D.new())
-	else:
-		assert($Human.active)
-		$Human.add_child(Camera2D.new())
-		
+	update_camera()
+
 
 func add_platform(at_pos, summoned_by_user=false):
 	var platform = $Platform.duplicate()
@@ -23,22 +19,37 @@ func add_platform(at_pos, summoned_by_user=false):
 	add_child(platform)
 
 
+func update_camera():
+	var tween = get_tree().create_tween()
+	if $Human.active:
+		var camera = $Human/Camera2D
+		camera.global_position = $Cat.global_position
+		tween.tween_property(camera, "position", Vector2.ZERO, 0.75).set_trans(Tween.TRANS_SINE)
+		camera.make_current()
+	else:
+		var camera = $Cat/Camera2D 
+		camera.global_position = $Human.global_position
+		tween.tween_property(camera, "position", Vector2.ZERO, 0.75).set_trans(Tween.TRANS_ELASTIC)
+		camera.make_current()
+
+
 func switch_character():
 	assert($Cat.active != $Human.active)
 	$Cat.active = !$Cat.active
 	$Human.active = !$Human.active
-	if $Human.active:
-		$Human/Camera2D.make_current()
-	else:
-		$Cat/Camera2D.make_current()
+	update_camera()
 
 
 func _process(delta):
 	if Input.is_action_just_pressed("switch_character"):
 		switch_character()
 		return
-	if Input.is_action_pressed("ui_down") and can_summon_platform:
-		add_platform($Cat.position + Vector2(0, 10), true)
+
+	var active_player = $Cat if $Cat.active else $Human
+	if Input.is_action_pressed("ui_down") and can_summon_platform and active_player.can_summon_platform:
+		var capsule_half_height = active_player.get_node("CollisionShape2D").shape.height
+		var platform_offset = Vector2(0, $Platform/CollisionShape2D.shape.size.y + capsule_half_height * 2)
+		add_platform(active_player.position + platform_offset, true)
 		can_summon_platform = false
 		$PlatformSummonCooldown.start(platform_summon_cooldown)
 

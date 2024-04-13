@@ -74,4 +74,4 @@ animation = &"walk"
 speed_scale = 1.5
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position_smoothing_enabled = true
+position_smoothing_speed = 1.0
