@@ -37,7 +37,9 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, speed)
 	
 	var animation_name = "default"
-	if velocity.abs():
+	if not is_on_floor():
+		animation_name = "jump" if velocity.y < 0 else "fall"
+	elif velocity.abs():
 		animation_name = "walk"
 
 	if $AnimatedSprite2D.animation != animation_name:

@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://bo2cp4c0wnrbg"]
+[gd_scene load_steps=17 format=3 uid="uid://bo2cp4c0wnrbg"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_lsu4g"]
 [ext_resource type="Texture2D" uid="uid://ccrvahu0vxeqk" path="res://Art/Images/nidja_jump.png" id="2_3n5ts"]
 [ext_resource type="Texture2D" uid="uid://hyl4bhxun347" path="res://Art/Images/nidja_walk.png" id="3_d1vbk"]
+[ext_resource type="Texture2D" uid="uid://vduxffpgtfhb" path="res://Art/Images/nidja_fall.png" id="3_vf0x7"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aytyd"]
 radius = 7.0
@@ -11,6 +12,26 @@ height = 36.6667
 [sub_resource type="AtlasTexture" id="AtlasTexture_mnr1e"]
 atlas = ExtResource("2_3n5ts")
 region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c0htm"]
+atlas = ExtResource("3_vf0x7")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2tlt3"]
+atlas = ExtResource("2_3n5ts")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bpmqq"]
+atlas = ExtResource("2_3n5ts")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_avgf1"]
+atlas = ExtResource("2_3n5ts")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cqj55"]
+atlas = ExtResource("2_3n5ts")
+region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hk5xp"]
 atlas = ExtResource("3_d1vbk")
@@ -36,6 +57,31 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c0htm")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2tlt3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bpmqq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_avgf1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cqj55")
+}],
+"loop": true,
+"name": &"jump",
 "speed": 5.0
 }, {
 "frames": [{
@@ -70,7 +116,7 @@ shape = SubResource("CapsuleShape2D_aytyd")
 texture_filter = 1
 position = Vector2(0, 2.33333)
 sprite_frames = SubResource("SpriteFrames_b5ibv")
-animation = &"walk"
+animation = &"fall"
 speed_scale = 1.5
 
 [node name="Camera2D" type="Camera2D" parent="."]

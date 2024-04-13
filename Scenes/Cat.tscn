@@ -1,12 +1,33 @@
-[gd_scene load_steps=11 format=3 uid="uid://c544yf31jn2wh"]
+[gd_scene load_steps=17 format=3 uid="uid://c544yf31jn2wh"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_q6o8g"]
 [ext_resource type="Texture2D" uid="uid://it3ttr56u1k" path="res://Art/Images/cicibela_template.png" id="2_phefy"]
 [ext_resource type="Texture2D" uid="uid://7dx1dvt5r8nh" path="res://Art/Images/cicibela_walk.png" id="3_3xylw"]
+[ext_resource type="Texture2D" uid="uid://cfftx5636x87d" path="res://Art/Images/cicibela_jump.png" id="3_k1mbo"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aytyd"]
 radius = 13.6666
 height = 27.3333
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3hqut"]
+atlas = ExtResource("3_k1mbo")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eal35"]
+atlas = ExtResource("3_k1mbo")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4peo"]
+atlas = ExtResource("3_k1mbo")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k5eu3"]
+atlas = ExtResource("3_k1mbo")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r63eu"]
+atlas = ExtResource("3_k1mbo")
+region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6vd11"]
 atlas = ExtResource("3_3xylw")
@@ -37,6 +58,31 @@ animations = [{
 "loop": false,
 "name": &"default",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3hqut")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eal35")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_t4peo")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_k5eu3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r63eu")
+}],
+"loop": false,
+"name": &"jump",
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -72,7 +118,7 @@ shape = SubResource("CapsuleShape2D_aytyd")
 texture_filter = 1
 position = Vector2(2, 3)
 sprite_frames = SubResource("SpriteFrames_wsi31")
-animation = &"walk"
+animation = &"jump"
 speed_scale = 1.5
 
 [node name="Camera2D" type="Camera2D" parent="."]
