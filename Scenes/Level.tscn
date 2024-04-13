@@ -1,11 +1,34 @@
-[gd_scene load_steps=6 format=3 uid="uid://dvoyv5ln4xtns"]
+[gd_scene load_steps=16 format=3 uid="uid://dvoyv5ln4xtns"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_l65dw"]
+[ext_resource type="Script" path="res://Scenes/Level.gd" id="1_nddeo"]
 [ext_resource type="Texture2D" uid="uid://it3ttr56u1k" path="res://Art/Images/cicibela_template.png" id="2_rx7tv"]
+[ext_resource type="Texture2D" uid="uid://7dx1dvt5r8nh" path="res://Art/Images/cicibela_walk.png" id="4_gpriy"]
+[ext_resource type="Script" path="res://Scenes/Platform.gd" id="4_x4r8d"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aytyd"]
 radius = 13.6667
 height = 27.3333
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6vd11"]
+atlas = ExtResource("4_gpriy")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmbhs"]
+atlas = ExtResource("4_gpriy")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4q50"]
+atlas = ExtResource("4_gpriy")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tkgmr"]
+atlas = ExtResource("4_gpriy")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_20i2a"]
+atlas = ExtResource("4_gpriy")
+region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wsi31"]
 animations = [{
@@ -16,41 +39,96 @@ animations = [{
 "loop": false,
 "name": &"default",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6vd11")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pmbhs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c4q50")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tkgmr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_20i2a")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 3.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_osdfe"]
-size = Vector2(753, 71)
+size = Vector2(383.5, 35.5)
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_auvkv"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_iuisx"]
+
+[node name="Level" type="Node2D"]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_nddeo")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 position = Vector2(250, 100)
 scale = Vector2(3, 3)
+collision_mask = 3
 script = ExtResource("1_l65dw")
-jump_velocity = -800.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = SubResource("CapsuleShape2D_aytyd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
 texture_filter = 1
+position = Vector2(2, 3)
 sprite_frames = SubResource("SpriteFrames_wsi31")
+animation = &"walk"
+speed_scale = 1.5
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+process_mode = 4
+visible = false
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="Platform" type="AnimatableBody2D" parent="."]
+process_mode = 4
+disable_mode = 1
+collision_layer = 2
+script = ExtResource("4_x4r8d")
+speed = 600.0
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(451, 675)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
+position = Vector2(233.25, 206.25)
 shape = SubResource("RectangleShape2D_osdfe")
 debug_color = Color(0.67451, 0.392157, 0.827451, 0.419608)
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1158, 496)
-shape = SubResource("RectangleShape2D_osdfe")
-debug_color = Color(0.67451, 0.392157, 0.827451, 0.419608)
+[node name="ColorRect" type="ColorRect" parent="Platform/CollisionShape2D"]
+offset_left = -193.0
+offset_top = -18.0
+offset_right = 191.0
+offset_bottom = 22.0
+color = Color(0.164706, 0.807843, 0.647059, 1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(434.5, 283.5)
-shape = SubResource("RectangleShape2D_osdfe")
-debug_color = Color(0.67451, 0.392157, 0.827451, 0.419608)
+[node name="PlatformSpawnTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="WorldLeft" type="Area2D" parent="."]
+position = Vector2(-1252, 192)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldLeft"]
+shape = SubResource("WorldBoundaryShape2D_auvkv")
+
+[node name="WorldBottom" type="Area2D" parent="."]
+position = Vector2(-200, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBottom"]
+position = Vector2(1047, 1564)
+shape = SubResource("WorldBoundaryShape2D_iuisx")
+
+[connection signal="timeout" from="PlatformSpawnTimer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="WorldLeft" to="CharacterBody2D" method="_on_area_2d_2_body_entered"]
+[connection signal="body_entered" from="WorldBottom" to="CharacterBody2D" method="_on_area_2d_2_body_entered"]

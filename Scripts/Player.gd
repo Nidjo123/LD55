@@ -1,17 +1,23 @@
 extends CharacterBody2D
 
 
-@export var speed: float = 300.0
+@export var speed: float = 400.0
 @export var jump_velocity: float = -600.0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = 1500 #ProjectSettings.get_setting("physics/2d/default_gravity")
+var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+
+var start_position
+
+
+func _ready():
+	start_position = position
 
 
 func _process(delta):
-	var direction = Input.get_axis("ui_left", "ui_right")
+	var direction = Input.get_axis("left", "right")
 	if direction:
-		$AnimatedSprite2D.flip_h = direction < 0 
+		$AnimatedSprite2D.flip_h = direction < 0
 
 
 func _physics_process(delta):
@@ -26,5 +32,16 @@ func _physics_process(delta):
 		velocity.x = direction * speed
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
+	
+	var animation_name = "default"
+	if velocity.abs():
+		animation_name = "walk"
+
+	if $AnimatedSprite2D.animation != animation_name:
+		$AnimatedSprite2D.play(animation_name)
 
 	move_and_slide()
+
+
+func _on_area_2d_2_body_entered(body):
+	position = start_position
