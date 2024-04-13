@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://dvoyv5ln4xtns"]
+
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_l65dw"]
+[ext_resource type="Texture2D" uid="uid://dxtwsjv5nffxm" path="res://icon.svg" id="2_pilkj"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aytyd"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wsi31"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_pilkj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_osdfe"]
+size = Vector2(753, 71)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(250, 100)
+scale = Vector2(3, 3)
+script = ExtResource("1_l65dw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CapsuleShape2D_aytyd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+scale = Vector2(0.125, 0.21875)
+sprite_frames = SubResource("SpriteFrames_wsi31")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(434.5, 283.5)
+shape = SubResource("RectangleShape2D_osdfe")
+debug_color = Color(0.67451, 0.392157, 0.827451, 0.419608)
