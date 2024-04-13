@@ -1,0 +1,66 @@
+[gd_scene load_steps=8 format=3 uid="uid://dvoyv5ln4xtns"]
+
+[ext_resource type="Script" path="res://Scenes/Level.gd" id="1_nddeo"]
+[ext_resource type="PackedScene" uid="uid://c544yf31jn2wh" path="res://Scenes/Cat.tscn" id="2_0yf06"]
+[ext_resource type="PackedScene" uid="uid://bo2cp4c0wnrbg" path="res://Scenes/Human.tscn" id="3_brvnc"]
+[ext_resource type="Script" path="res://Scenes/Platform.gd" id="4_x4r8d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_osdfe"]
+size = Vector2(383.5, 35.5)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_auvkv"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_iuisx"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_nddeo")
+
+[node name="PlatformSummonCooldown" type="Timer" parent="."]
+
+[node name="Cat" parent="." instance=ExtResource("2_0yf06")]
+position = Vector2(251, 100)
+active = true
+
+[node name="Human" parent="." instance=ExtResource("3_brvnc")]
+position = Vector2(140, 114)
+scale = Vector2(4, 4)
+
+[node name="Platform" type="AnimatableBody2D" parent="."]
+process_mode = 4
+disable_mode = 1
+collision_layer = 2
+script = ExtResource("4_x4r8d")
+speed = 600.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
+position = Vector2(233.25, 206.25)
+shape = SubResource("RectangleShape2D_osdfe")
+debug_color = Color(0.67451, 0.392157, 0.827451, 0.419608)
+
+[node name="ColorRect" type="ColorRect" parent="Platform/CollisionShape2D"]
+offset_left = -193.0
+offset_top = -18.0
+offset_right = 191.0
+offset_bottom = 22.0
+color = Color(0.164706, 0.807843, 0.647059, 1)
+
+[node name="PlatformSpawnTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="WorldLeft" type="Area2D" parent="."]
+position = Vector2(-1252, 192)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldLeft"]
+shape = SubResource("WorldBoundaryShape2D_auvkv")
+
+[node name="WorldBottom" type="Area2D" parent="."]
+position = Vector2(-200, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBottom"]
+position = Vector2(1047, 1564)
+shape = SubResource("WorldBoundaryShape2D_iuisx")
+
+[connection signal="timeout" from="PlatformSummonCooldown" to="." method="_on_platform_summon_cooldown_timeout"]
+[connection signal="timeout" from="PlatformSpawnTimer" to="." method="_on_timer_timeout"]

@@ -1,65 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://dvoyv5ln4xtns"]
+[gd_scene load_steps=11 format=3 uid="uid://dvoyv5ln4xtns"]
 
-[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_l65dw"]
-[ext_resource type="Script" path="res://Scenes/Level.gd" id="1_nddeo"]
-[ext_resource type="Texture2D" uid="uid://it3ttr56u1k" path="res://Art/Images/cicibela_template.png" id="2_rx7tv"]
-[ext_resource type="Texture2D" uid="uid://7dx1dvt5r8nh" path="res://Art/Images/cicibela_walk.png" id="4_gpriy"]
-[ext_resource type="Script" path="res://Scenes/Platform.gd" id="4_x4r8d"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aytyd"]
-radius = 13.6667
-height = 27.3333
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6vd11"]
-atlas = ExtResource("4_gpriy")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pmbhs"]
-atlas = ExtResource("4_gpriy")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_c4q50"]
-atlas = ExtResource("4_gpriy")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tkgmr"]
-atlas = ExtResource("4_gpriy")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_20i2a"]
-atlas = ExtResource("4_gpriy")
-region = Rect2(128, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_wsi31"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_rx7tv")
-}],
-"loop": false,
-"name": &"default",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6vd11")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pmbhs")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_c4q50")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tkgmr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_20i2a")
-}],
-"loop": true,
-"name": &"walk",
-"speed": 3.0
-}]
+[ext_resource type="Script" path="res://Scripts/Level.gd" id="1_nddeo"]
+[ext_resource type="PackedScene" uid="uid://c544yf31jn2wh" path="res://Scenes/Cat.tscn" id="2_0yf06"]
+[ext_resource type="PackedScene" uid="uid://bo2cp4c0wnrbg" path="res://Scenes/Human.tscn" id="3_brvnc"]
+[ext_resource type="Script" path="res://Scripts/Platform.gd" id="4_x4r8d"]
+[ext_resource type="Texture2D" uid="uid://bpdmuaubtlbri" path="res://Art/Images/temp_tilemap.png" id="5_6jlo2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_osdfe"]
 size = Vector2(383.5, 35.5)
@@ -69,36 +14,143 @@ normal = Vector2(1, 0)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_iuisx"]
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r8c3g"]
+resource_name = "temp"
+texture = ExtResource("5_6jlo2")
+texture_region_size = Vector2i(32, 32)
+1:1/0 = 0
+1:1/0/terrain_set = 0
+1:1/0/terrain = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0/terrains_peering_bit/right_side = 0
+2:1/0 = 0
+2:1/0/terrain_set = 0
+2:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:1/0/physics_layer_0/angular_velocity = 0.0
+3:1/0 = 0
+3:1/0/terrain_set = 0
+3:1/0/terrain = 0
+3:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:1/0/physics_layer_0/angular_velocity = 0.0
+3:1/0/terrains_peering_bit/right_side = 0
+3:1/0/terrains_peering_bit/left_side = 0
+4:1/0 = 0
+4:1/0/terrain_set = 0
+4:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:1/0/physics_layer_0/angular_velocity = 0.0
+5:1/0 = 0
+5:1/0/terrain_set = 0
+5:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:1/0/physics_layer_0/angular_velocity = 0.0
+6:1/0 = 0
+6:1/0/terrain_set = 0
+6:1/0/terrain = 0
+6:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+6:1/0/physics_layer_0/angular_velocity = 0.0
+6:1/0/terrains_peering_bit/left_side = 0
+1:2/0 = 0
+1:2/0/terrain_set = 0
+1:2/0/terrain = 0
+1:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:2/0/physics_layer_0/angular_velocity = 0.0
+1:2/0/terrains_peering_bit/top_side = 0
+2:2/0 = 0
+2:2/0/terrain_set = 0
+2:2/0/terrain = 0
+2:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:2/0/physics_layer_0/angular_velocity = 0.0
+2:2/0/terrains_peering_bit/right_side = 0
+2:2/0/terrains_peering_bit/bottom_right_corner = 0
+2:2/0/terrains_peering_bit/bottom_side = 0
+2:2/0/terrains_peering_bit/top_left_corner = 0
+2:2/0/terrains_peering_bit/top_side = 0
+2:2/0/terrains_peering_bit/top_right_corner = 0
+3:2/0 = 0
+3:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:2/0/physics_layer_0/angular_velocity = 0.0
+4:2/0 = 0
+4:2/0/terrain_set = 0
+4:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:2/0/physics_layer_0/angular_velocity = 0.0
+5:2/0 = 0
+5:2/0/terrain_set = 0
+5:2/0/terrain = 0
+5:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:2/0/physics_layer_0/angular_velocity = 0.0
+5:2/0/terrains_peering_bit/right_side = 0
+5:2/0/terrains_peering_bit/bottom_side = 0
+5:2/0/terrains_peering_bit/bottom_left_corner = 0
+5:2/0/terrains_peering_bit/left_side = 0
+5:2/0/terrains_peering_bit/top_left_corner = 0
+5:2/0/terrains_peering_bit/top_side = 0
+5:2/0/terrains_peering_bit/top_right_corner = 0
+6:2/0 = 0
+6:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+6:2/0/physics_layer_0/angular_velocity = 0.0
+2:3/0 = 0
+2:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:3/0/physics_layer_0/angular_velocity = 0.0
+3:3/0 = 0
+3:3/0/terrain_set = 0
+3:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:3/0/physics_layer_0/angular_velocity = 0.0
+3:3/0/terrains_peering_bit/bottom_right_corner = 0
+3:3/0/terrains_peering_bit/bottom_side = 0
+3:3/0/terrains_peering_bit/bottom_left_corner = 0
+4:3/0 = 0
+4:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:3/0/physics_layer_0/angular_velocity = 0.0
+5:3/0 = 0
+5:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:3/0/physics_layer_0/angular_velocity = 0.0
+2:4/0 = 0
+2:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:4/0/physics_layer_0/angular_velocity = 0.0
+3:4/0 = 0
+3:4/0/terrain_set = 0
+3:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:4/0/physics_layer_0/angular_velocity = 0.0
+4:4/0 = 0
+4:4/0/terrain_set = 0
+4:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:4/0/physics_layer_0/angular_velocity = 0.0
+5:4/0 = 0
+5:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:4/0/physics_layer_0/angular_velocity = 0.0
+3:5/0 = 0
+3:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:5/0/physics_layer_0/angular_velocity = 0.0
+4:5/0 = 0
+4:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:5/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSet" id="TileSet_0uyce"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Terrain 0"
+terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
+sources/0 = SubResource("TileSetAtlasSource_r8c3g")
+
 [node name="Level" type="Node2D"]
-scale = Vector2(0.5, 0.5)
 script = ExtResource("1_nddeo")
 
 [node name="PlatformSummonCooldown" type="Timer" parent="."]
 
-[node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(250, 100)
-scale = Vector2(3, 3)
-collision_mask = 3
-script = ExtResource("1_l65dw")
+[node name="Human" parent="." instance=ExtResource("3_brvnc")]
+position = Vector2(140, 114)
+scale = Vector2(4, 4)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-shape = SubResource("CapsuleShape2D_aytyd")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
-texture_filter = 1
-position = Vector2(2, 3)
-sprite_frames = SubResource("SpriteFrames_wsi31")
-animation = &"walk"
-speed_scale = 1.5
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-process_mode = 4
-visible = false
+[node name="Cat" parent="." instance=ExtResource("2_0yf06")]
+position = Vector2(251, 100)
+active = true
 
 [node name="Platform" type="AnimatableBody2D" parent="."]
 process_mode = 4
 disable_mode = 1
-collision_layer = 2
+collision_layer = 4
+collision_mask = 3
 script = ExtResource("4_x4r8d")
 speed = 600.0
 
@@ -131,7 +183,15 @@ position = Vector2(-200, 0)
 position = Vector2(1047, 1564)
 shape = SubResource("WorldBoundaryShape2D_iuisx")
 
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_0uyce")
+rendering_quadrant_size = 32
+format = 2
+layer_0/tile_data = PackedInt32Array(589830, 393216, 1, 589832, 262144, 4, 655366, 262144, 4, 655365, 393216, 1, 720901, 65536, 1, 786441, 393216, 1, 720902, 393216, 1, 655373, 262144, 4, 720899, 262144, 4, 786436, 262144, 4, 786435, 262144, 4, 786434, 262144, 4, 786437, 262144, 4, 524294, 262144, 4, 524295, 262144, 4, 524296, 262144, 4, 524297, 262144, 4, 524298, 262144, 4, 524299, 262144, 4, 524300, 262144, 4, 524301, 262144, 4, 524304, 262144, 4, 589839, 65536, 1, 720905, 65536, 1, 720906, 196608, 1, 720907, 196608, 1, 720908, 196608, 1, 720909, 393216, 1, 720911, 65536, 1, 720912, 196608, 1, 720913, 393216, 1, 589840, 393216, 1, 327695, 65536, 1, 327696, 196608, 1, 327697, 196608, 1, 327698, 196608, 1, 327699, 196608, 1, 327700, 393216, 1, 196627, 393216, 1, 196626, 196608, 1, 196625, 196608, 1, 196624, 196608, 1, 196623, 65536, 1, 65550, 65536, 1, 65551, 196608, 1, 65552, 196608, 1, 65553, 196608, 1, 65554, 393216, 1, 851980, 65536, 1, 851981, 196608, 1, 851982, 196608, 1, 851983, 196608, 1, 851984, 196608, 1, 851985, 196608, 1, 851986, 196608, 1, 851987, 393216, 1, 524306, 65536, 1, 524307, 196608, 1, 524308, 196608, 1, 524309, 393216, 1, 655378, 65536, 1, 655379, 196608, 1, 655380, 196608, 1, 655381, 393216, 1, 393232, 196608, 4, 393233, 196608, 4, 393234, 196608, 4, 393235, 196608, 4, 393236, 196608, 4, 458769, 196608, 4, 458770, 196608, 4, 458772, 196608, 4, 458771, 196608, 4, 851975, 65536, 2, 917511, 327680, 2, 917512, 131072, 2, 917513, 327680, 2, 983049, 327680, 2, 983048, 131072, 2, 983047, 327680, 2, 983046, 131072, 2, 917510, 131072, 2, 1048585, 327680, 2, 1048584, 327680, 2, 851974, 131072, 2, 1048583, 131072, 2, 1048586, 196608, 1, 1048587, 327680, 2, 983051, 327680, 2, 983050, 327680, 2, 917514, 131072, 2, 917515, 196608, 3, 851977, 196608, 3, 851978, 196608, 3, 851976, 196608, 3, 1048588, 196608, 1, 1048589, 196608, 1, 1048590, 196608, 1, 1048591, 393216, 1, 1048596, 131072, 2, 1048595, 327680, 2, 1048594, 131072, 2, 1114130, 131072, 2, 1114131, 327680, 2, 1114132, 327680, 2, 1179667, 327680, 2, 1179666, 131072, 2, 1179668, 327680, 2, 1114133, 327680, 2, 1048597, 327680, 2, 983060, 196608, 3, 983061, 196608, 3, 983059, 196608, 3, 983058, 327680, 2, 917521, 65536, 2, 983057, 131072, 2, 1310740, 393216, 1, 1310739, 196608, 1, 1310738, 65536, 1, 1376273, 393216, 1, 1376271, 196608, 1, 1376272, 196608, 1, 1376270, 196608, 1, 1441804, 393216, 1, 1376269, 196608, 1, 1441803, 196608, 1, 1441802, 131072, 2, 1376266, 131072, 2, 1376267, 327680, 2, 1310730, 196608, 3, 1310731, 196608, 3, 1376268, 327680, 2, 1310732, 196608, 3, 1441807, 131072, 2, 1441808, 327680, 2, 1441809, 131072, 2, 1441810, 196608, 1, 1441811, 393216, 1, 1507346, 327680, 2, 1507345, 327680, 2, 1507344, 327680, 2, 1507343, 131072, 2, 1507342, 196608, 1, 1507341, 196608, 1, 1507339, 327680, 2, 1507340, 327680, 2, 1507338, 131072, 2, 1507337, 196608, 1, 1245186, 65536, 2, 1310723, 65536, 2, 1376259, 131072, 2, 1376260, 327680, 2, 1441797, 65536, 1, 1441798, 131072, 2, 1507334, 327680, 2, 1507335, 327680, 2, 1507336, 196608, 1, 1376262, 131072, 2, 1310726, 131072, 2, 1245190, 327680, 2, 1179654, 131072, 2, 1245189, 131072, 2, 1310725, 327680, 2, 1179653, 196608, 3, 1310724, 131072, 2, 1245188, 196608, 3, 1376263, 327680, 2, 1310727, 196608, 3, 1441799, 327680, 2, 1507333, 131072, 2)
+
 [connection signal="timeout" from="PlatformSummonCooldown" to="." method="_on_platform_summon_cooldown_timeout"]
 [connection signal="timeout" from="PlatformSpawnTimer" to="." method="_on_timer_timeout"]
-[connection signal="body_entered" from="WorldLeft" to="Player" method="_on_area_2d_2_body_entered"]
-[connection signal="body_entered" from="WorldBottom" to="Player" method="_on_area_2d_2_body_entered"]
+[connection signal="body_entered" from="WorldLeft" to="Cat" method="_on_area_2d_2_body_entered"]
+[connection signal="body_entered" from="WorldLeft" to="Human" method="_on_area_2d_2_body_entered"]
+[connection signal="body_entered" from="WorldBottom" to="Cat" method="_on_area_2d_2_body_entered"]
+[connection signal="body_entered" from="WorldBottom" to="Human" method="_on_area_2d_2_body_entered"]

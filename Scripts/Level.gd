@@ -5,10 +5,15 @@ extends Node2D
 
 var can_summon_platform = true
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
 
+func _ready():
+	assert($Cat.active != $Human.active)
+	if $Cat.active:
+		$Cat.add_child(Camera2D.new())
+	else:
+		assert($Human.active)
+		$Human.add_child(Camera2D.new())
+		
 
 func add_platform(at_pos, summoned_by_user=false):
 	var platform = $Platform.duplicate()
@@ -18,9 +23,22 @@ func add_platform(at_pos, summoned_by_user=false):
 	add_child(platform)
 
 
+func switch_character():
+	assert($Cat.active != $Human.active)
+	$Cat.active = !$Cat.active
+	$Human.active = !$Human.active
+	if $Human.active:
+		$Human/Camera2D.make_current()
+	else:
+		$Cat/Camera2D.make_current()
+
+
 func _process(delta):
+	if Input.is_action_just_pressed("switch_character"):
+		switch_character()
+		return
 	if Input.is_action_pressed("ui_down") and can_summon_platform:
-		add_platform($Player.position + Vector2(0, 10), true)
+		add_platform($Cat.position + Vector2(0, 10), true)
 		can_summon_platform = false
 		$PlatformSummonCooldown.start(platform_summon_cooldown)
 
