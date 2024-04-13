@@ -73,23 +73,25 @@ normal = Vector2(1, 0)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_nddeo")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="PlatformSummonCooldown" type="Timer" parent="."]
+
+[node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(250, 100)
 scale = Vector2(3, 3)
 collision_mask = 3
 script = ExtResource("1_l65dw")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 shape = SubResource("CapsuleShape2D_aytyd")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
 texture_filter = 1
 position = Vector2(2, 3)
 sprite_frames = SubResource("SpriteFrames_wsi31")
 animation = &"walk"
 speed_scale = 1.5
 
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+[node name="Camera2D" type="Camera2D" parent="Player"]
 process_mode = 4
 visible = false
 
@@ -113,7 +115,7 @@ offset_bottom = 22.0
 color = Color(0.164706, 0.807843, 0.647059, 1)
 
 [node name="PlatformSpawnTimer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 3.0
 autostart = true
 
 [node name="WorldLeft" type="Area2D" parent="."]
@@ -129,6 +131,7 @@ position = Vector2(-200, 0)
 position = Vector2(1047, 1564)
 shape = SubResource("WorldBoundaryShape2D_iuisx")
 
+[connection signal="timeout" from="PlatformSummonCooldown" to="." method="_on_platform_summon_cooldown_timeout"]
 [connection signal="timeout" from="PlatformSpawnTimer" to="." method="_on_timer_timeout"]
-[connection signal="body_entered" from="WorldLeft" to="CharacterBody2D" method="_on_area_2d_2_body_entered"]
-[connection signal="body_entered" from="WorldBottom" to="CharacterBody2D" method="_on_area_2d_2_body_entered"]
+[connection signal="body_entered" from="WorldLeft" to="Player" method="_on_area_2d_2_body_entered"]
+[connection signal="body_entered" from="WorldBottom" to="Player" method="_on_area_2d_2_body_entered"]
