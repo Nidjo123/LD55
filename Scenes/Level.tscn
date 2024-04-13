@@ -1,17 +1,19 @@
 [gd_scene load_steps=6 format=3 uid="uid://dvoyv5ln4xtns"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_l65dw"]
-[ext_resource type="Texture2D" uid="uid://dxtwsjv5nffxm" path="res://icon.svg" id="2_pilkj"]
+[ext_resource type="Texture2D" uid="uid://it3ttr56u1k" path="res://Art/Images/cicibela_template.png" id="2_rx7tv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aytyd"]
+radius = 13.6667
+height = 27.3333
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wsi31"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_pilkj")
+"texture": ExtResource("2_rx7tv")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 5.0
 }]
@@ -25,15 +27,28 @@ size = Vector2(753, 71)
 position = Vector2(250, 100)
 scale = Vector2(3, 3)
 script = ExtResource("1_l65dw")
+jump_velocity = -800.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = SubResource("CapsuleShape2D_aytyd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
-scale = Vector2(0.125, 0.21875)
+texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_wsi31")
 
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(451, 675)
+shape = SubResource("RectangleShape2D_osdfe")
+debug_color = Color(0.67451, 0.392157, 0.827451, 0.419608)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1158, 496)
+shape = SubResource("RectangleShape2D_osdfe")
+debug_color = Color(0.67451, 0.392157, 0.827451, 0.419608)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(434.5, 283.5)
