@@ -1,10 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://dvoyv5ln4xtns"]
+[gd_scene load_steps=12 format=3 uid="uid://dvoyv5ln4xtns"]
 
 [ext_resource type="Script" path="res://Scripts/Level.gd" id="1_nddeo"]
 [ext_resource type="PackedScene" uid="uid://c544yf31jn2wh" path="res://Scenes/Cat.tscn" id="2_0yf06"]
 [ext_resource type="PackedScene" uid="uid://bo2cp4c0wnrbg" path="res://Scenes/Human.tscn" id="3_brvnc"]
+[ext_resource type="FontFile" uid="uid://chuemkmmvqw7h" path="res://Art/Images/font.png" id="3_rfqbk"]
 [ext_resource type="PackedScene" uid="uid://ddirawafuvdg6" path="res://Scenes/MovablePlatform.tscn" id="5_frehh"]
 [ext_resource type="Texture2D" uid="uid://bckvr5sphbcrg" path="res://Art/Images/tilemap_1.png" id="5_ybg2j"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_arj1l"]
+font_size = 8
+shadow_color = Color(0.0588235, 0.14902, 0.176471, 0.803922)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_auvkv"]
 normal = Vector2(1, 0)
@@ -929,6 +934,16 @@ script = ExtResource("1_nddeo")
 [node name="Human" parent="." instance=ExtResource("3_brvnc")]
 position = Vector2(-36, -127)
 scale = Vector2(4, 4)
+
+[node name="Label" type="Label" parent="Human"]
+offset_left = 78.0
+offset_top = -5.0
+offset_right = 316.0
+offset_bottom = 12.0
+theme_override_fonts/font = ExtResource("3_rfqbk")
+text = "NOW YOU'RE PLAYING WITH POWER
+"
+label_settings = SubResource("LabelSettings_arj1l")
 
 [node name="Cat" parent="." instance=ExtResource("2_0yf06")]
 position = Vector2(75, -141)

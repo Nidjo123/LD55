@@ -13,6 +13,7 @@ collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_ry8xx")
 speed = 600.0
+vanish_time = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_osdfe")
@@ -29,17 +30,16 @@ metadata/_edit_use_anchors_ = true
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="CollisionShape2D"]
 process_mode = 3
-amount = 32
+amount = 64
 preprocess = 2.0
+explosiveness = 0.75
 randomness = 0.4
-lifetime_randomness = 0.1
-local_coords = true
+lifetime_randomness = 0.35
 texture = ExtResource("2_d26do")
 emission_shape = 3
-emission_rect_extents = Vector2(130, 32)
-direction = Vector2(0, 1)
-spread = 85.0
-gravity = Vector2(0, 10)
+emission_rect_extents = Vector2(150, 32)
+direction = Vector2(0, 0)
+gravity = Vector2(0, 16)
 orbit_velocity_min = -0.03
 orbit_velocity_max = 0.03
 damping_max = 0.25

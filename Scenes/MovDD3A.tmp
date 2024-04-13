@@ -37,6 +37,7 @@ local_coords = true
 texture = ExtResource("2_d26do")
 emission_shape = 3
 emission_rect_extents = Vector2(130, 32)
+particle_flag_align_y = true
 direction = Vector2(0, 1)
 spread = 85.0
 gravity = Vector2(0, 10)
