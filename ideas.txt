@@ -1,0 +1,30 @@
+Summoning
+
+- 2D platformer
+- Nidja (human) and Cicibela (cat)
+- 2 characters, pixel art animations
+  - if too hard, Cicibela can be in a backpack
+- Dzejo is a potential enemy that sabotages Cicibela or scares her off
+
+- Cicibela summons platforms
+  - platforms despawn, shrink, etc.
+
+Story:
+It all happens in Cicibela's sleep. In her mind she is the main character even though Nidja is doing all the physical work.
+During the adventure, they encounter Dzejo as an enemy.
+In the end she wakes up when she hears Jaja ringing the door bell to start LD55.
+
+
+- art
+  - Nidja
+  - Cicibela
+    - animations: idle, run, jump
+  - platform
+  - backgrounds
+
+- sounds
+  - jump
+  - run
+  - main theme
+
+
