@@ -49,4 +49,5 @@ func _physics_process(delta):
 
 
 func _on_area_2d_2_body_entered(body):
-	position = start_position
+	if body == self:
+		position = start_position

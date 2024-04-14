@@ -29,8 +29,11 @@ metadata/_edit_use_anchors_ = true
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="CollisionShape2D"]
 process_mode = 3
+emitting = false
 amount = 32
-preprocess = 2.0
+lifetime = 2.0
+one_shot = true
+explosiveness = 0.85
 randomness = 0.4
 lifetime_randomness = 0.1
 local_coords = true

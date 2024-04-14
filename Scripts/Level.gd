@@ -2,13 +2,14 @@ extends Node2D
 
 
 @export var platform_summon_cooldown: float = 1.0
+@export var next_level: PackedScene
 
 var can_summon_platform = true
 
 
 func _ready():
 	assert($Cat.active != $Human.active)
-	update_camera()
+	$Cat/Camera2D.make_current()
 
 
 func add_platform(at_pos, summoned_by_user=false):
@@ -16,6 +17,7 @@ func add_platform(at_pos, summoned_by_user=false):
 	platform.position = at_pos
 	platform.summoned_by_user = summoned_by_user
 	platform.process_mode = Node.PROCESS_MODE_INHERIT
+	platform.visible = true
 	add_child(platform)
 
 
@@ -61,3 +63,23 @@ func _on_timer_timeout():
 
 func _on_platform_summon_cooldown_timeout():
 	can_summon_platform = true
+
+
+func go_to_next_level():
+	if next_level:
+		get_tree().change_scene_to_packed(next_level)
+
+
+var inside_area_bodies = []
+
+
+func _on_exit_area_body_entered(body):
+	inside_area_bodies.append(body)
+	if $Cat in inside_area_bodies and $Human in inside_area_bodies:
+		get_tree().create_timer(1.0, true).connect("timeout", go_to_next_level)
+
+
+func _on_exit_area_body_exited(body):
+	var idx = inside_area_bodies.find(body)
+	if idx >= 0:
+		inside_area_bodies.remove_at(idx)

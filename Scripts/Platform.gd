@@ -11,6 +11,7 @@ var summoned_by_user = false
 
 func _ready():
 	$CollisionShape2D/CPUParticles2D.lifetime = vanish_time
+	$CollisionShape2D/CPUParticles2D.emitting = true
 	if summoned_by_user:
 		var tween = create_tween()
 		tween.tween_property(self, "scale", Vector2(cutoff_scale, 1), vanish_time)

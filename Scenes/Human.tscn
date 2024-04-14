@@ -7,7 +7,7 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aytyd"]
 radius = 7.0
-height = 36.6667
+height = 28.6667
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mnr1e"]
 atlas = ExtResource("2_3n5ts")
@@ -114,7 +114,7 @@ shape = SubResource("CapsuleShape2D_aytyd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(0, 2.33333)
+position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_b5ibv")
 animation = &"fall"
 speed_scale = 1.5
