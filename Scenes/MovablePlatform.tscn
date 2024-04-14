@@ -19,6 +19,7 @@ shape = SubResource("RectangleShape2D_osdfe")
 debug_color = Color(0.67451, 0.392157, 0.827451, 0.419608)
 
 [node name="ColorRect" type="ColorRect" parent="CollisionShape2D"]
+visible = false
 modulate = Color(1, 1, 1, 0.317647)
 offset_left = -125.0
 offset_top = -16.0
