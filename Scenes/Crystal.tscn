@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://b5c145m1mau2s"]
+
+[ext_resource type="Texture2D" uid="uid://i7yp8d2uwp4u" path="res://Art/Images/crystal.png" id="1_8hg3r"]
+[ext_resource type="Script" path="res://Scenes/Crystal.gd" id="2_gjwt1"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pbnv1"]
+radius = 12.5
+
+[sub_resource type="Gradient" id="Gradient_p1qjm"]
+offsets = PackedFloat32Array(0.181818, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ti8xm"]
+gradient = SubResource("Gradient_p1qjm")
+fill = 1
+fill_from = Vector2(0.504587, 0.490826)
+fill_to = Vector2(0.178899, 0.917431)
+
+[node name="Crystal" type="Sprite2D" node_paths=PackedStringArray("unlocks")]
+texture_filter = 1
+position = Vector2(1437, 100)
+scale = Vector2(2, 2)
+texture = ExtResource("1_8hg3r")
+script = ExtResource("2_gjwt1")
+unlocks = NodePath("")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 16
+lifetime = 2.0
+randomness = 0.3
+emission_shape = 1
+emission_sphere_radius = 32.0
+gravity = Vector2(0, 10)
+orbit_velocity_min = -0.5
+orbit_velocity_max = 0.5
+
+[node name="TriggerArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerArea"]
+position = Vector2(0.5, 1)
+shape = SubResource("CapsuleShape2D_pbnv1")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.74902, 0.254902, 0.905882, 1)
+texture = SubResource("GradientTexture2D_ti8xm")
+
+[connection signal="body_entered" from="TriggerArea" to="." method="_on_trigger_area_body_entered"]

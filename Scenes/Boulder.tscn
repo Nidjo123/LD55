@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7xgourw8w7ja"]
+
+[ext_resource type="Script" path="res://Scenes/Boulder.gd" id="1_upxva"]
+[ext_resource type="Texture2D" uid="uid://j4eykok5fr2h" path="res://Art/Images/boulder.png" id="2_m43xe"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qw73a"]
+radius = 51.0
+height = 132.0
+
+[node name="Boulder" type="StaticBody2D"]
+position = Vector2(1055, 454)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_upxva")
+
+[node name="Boulder" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-3, -2)
+scale = Vector2(2, 2)
+texture = ExtResource("2_m43xe")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+randomness = 0.17
+lifetime_randomness = 0.16
+texture = ExtResource("2_m43xe")
+emission_shape = 1
+emission_sphere_radius = 64.0
+direction = Vector2(0, -1)
+gravity = Vector2(0, 100)
+initial_velocity_min = 10.0
+initial_velocity_max = 200.0
+angular_velocity_min = -87.27
+angular_velocity_max = 72.73
+orbit_velocity_min = -0.1
+orbit_velocity_max = 0.1
+damping_max = 5.556
+angle_min = -45.0
+angle_max = 45.0
+scale_amount_min = 0.25
+scale_amount_max = 0.75
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_qw73a")
+
+[connection signal="unlocked" from="." to="." method="_on_unlocked"]

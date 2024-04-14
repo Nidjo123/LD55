@@ -9,7 +9,10 @@ var can_summon_platform = true
 
 func _ready():
 	assert($Cat.active != $Human.active)
-	$Cat/Camera2D.make_current()
+	if $Cat.active:
+		$Cat/Camera2D.make_current()
+	elif $Human.active:
+		$Human/Camera2D.make_current()
 
 
 func add_platform(at_pos, summoned_by_user=false):

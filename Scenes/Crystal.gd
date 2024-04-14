@@ -2,6 +2,7 @@ extends Sprite2D
 
 
 @export var unlocks: Node
+var done: bool = false
 
 
 func _ready():
@@ -13,4 +14,7 @@ func _process(delta):
 
 
 func _on_trigger_area_body_entered(body):
-	pass
+	if done:
+		return
+	unlocks.emit_signal("unlocked")
+	done = true

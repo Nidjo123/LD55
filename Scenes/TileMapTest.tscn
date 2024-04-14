@@ -11,7 +11,6 @@ tile_data = PackedInt32Array(0, 131073, 1, 1, 131073, 1)
 tile_data = PackedInt32Array(0, 131073, 0, 65536, 131073, 1, 1, 196609, 0, 65537, 196609, 1)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_q58rm"]
-load_path = "res://.godot/imported/tileset_dirt_and_grass_1.png-ca5ba5604b5f323fc183194b97abd18c.ctex"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mcgsd"]
 texture = SubResource("CompressedTexture2D_q58rm")
@@ -90,7 +89,7 @@ pattern_0 = SubResource("TileMapPattern_5do0f")
 pattern_1 = SubResource("TileMapPattern_pwnrd")
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_18kmw"]
-radius = 13.6667
+radius = 13.6666
 height = 27.3333
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6vd11"]
