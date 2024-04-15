@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://epnwgwgd43fh"]
+[gd_scene load_steps=15 format=3 uid="uid://epnwgwgd43fh"]
 
 [ext_resource type="Script" path="res://Scripts/Level.gd" id="1_guomu"]
 [ext_resource type="PackedScene" uid="uid://btnseilmjh0lc" path="res://Scenes/Level2.tscn" id="2_qlgk0"]
@@ -6,7 +6,6 @@
 [ext_resource type="AudioStream" uid="uid://cnfoxt6ocunn8" path="res://Art/Audio/definition_of_insanity.wav" id="3_vmike"]
 [ext_resource type="PackedScene" uid="uid://bo2cp4c0wnrbg" path="res://Scenes/Human.tscn" id="4_bh6ko"]
 [ext_resource type="PackedScene" uid="uid://c544yf31jn2wh" path="res://Scenes/Cat.tscn" id="5_wdoaw"]
-[ext_resource type="Texture2D" uid="uid://lnknycm3g4wy" path="res://Art/Images/tilemap_crazy.png" id="6_hqpc2"]
 [ext_resource type="PackedScene" uid="uid://ddirawafuvdg6" path="res://Scenes/MovablePlatform.tscn" id="7_0nhj3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_arj1l"]
@@ -18,7 +17,6 @@ normal = Vector2(1, 0)
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_iuisx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lms1u"]
-texture = ExtResource("6_hqpc2")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/terrain_set = 0

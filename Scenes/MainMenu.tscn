@@ -1,8 +1,45 @@
-[gd_scene load_steps=4 format=3 uid="uid://p00afaxw3gwm"]
+[gd_scene load_steps=10 format=3 uid="uid://p00afaxw3gwm"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_esj83"]
 [ext_resource type="FontFile" uid="uid://chuemkmmvqw7h" path="res://Art/Images/font.png" id="1_gpdr2"]
+[ext_resource type="Texture2D" uid="uid://cnsmomc68gjwj" path="res://Art/Images/title_doodle.png" id="4_lv7w4"]
 [ext_resource type="Script" path="res://Scripts/VolumeSlider.gd" id="4_t8isi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sva3e"]
+atlas = ExtResource("4_lv7w4")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_obmw3"]
+atlas = ExtResource("4_lv7w4")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0puby"]
+atlas = ExtResource("4_lv7w4")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xs2xs"]
+atlas = ExtResource("4_lv7w4")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sy38w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sva3e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_obmw3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0puby")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xs2xs")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -97,6 +134,13 @@ size_flags_vertical = 1
 max_value = 1.0
 step = 0.001
 script = ExtResource("4_t8isi")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(256, 427)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_sy38w")
+autoplay = "default"
 
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/AboutButton" to="." method="_on_about_button_pressed"]

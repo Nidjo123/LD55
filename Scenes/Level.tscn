@@ -600,7 +600,7 @@ offset_top = 461.0
 offset_right = 5119.0
 offset_bottom = 479.0
 text = "GET BOTH HERE. 
-USE \"F\" TO SWITCH CHARACTERS."
+PRESS F TO SWITCH CHARACTERS."
 label_settings = SubResource("LabelSettings_gvbsa")
 horizontal_alignment = 1
 
