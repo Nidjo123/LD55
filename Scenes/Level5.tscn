@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://j8cod5disukg"]
+[gd_scene load_steps=14 format=3 uid="uid://j8cod5disukg"]
 
 [ext_resource type="Script" path="res://Scripts/Level.gd" id="1_pyxte"]
+[ext_resource type="PackedScene" uid="uid://epnwgwgd43fh" path="res://Scenes/Level6.tscn" id="2_53qbi"]
 [ext_resource type="PackedScene" uid="uid://bo2cp4c0wnrbg" path="res://Scenes/Human.tscn" id="3_etvu2"]
 [ext_resource type="PackedScene" uid="uid://c544yf31jn2wh" path="res://Scenes/Cat.tscn" id="4_2e4et"]
 [ext_resource type="Texture2D" uid="uid://bckvr5sphbcrg" path="res://Art/Images/tilemap_1.png" id="5_4tqph"]
@@ -505,6 +506,7 @@ size = Vector2(327.5, 133)
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_pyxte")
+next_level = ExtResource("2_53qbi")
 
 [node name="PlatformSummonCooldown" type="Timer" parent="."]
 
