@@ -51,7 +51,7 @@ func _process(delta):
 		return
 
 	var active_player = $Cat if $Cat.active else $Human
-	if Input.is_action_pressed("ui_down") and can_summon_platform and active_player.can_summon_platform:
+	if Input.is_action_pressed("summon") and can_summon_platform and active_player.can_summon_platform:
 		var capsule_half_height = active_player.get_node("CollisionShape2D").shape.height
 		var platform_offset = Vector2(0, $Platform/CollisionShape2D.shape.size.y + capsule_half_height * 2)
 		add_platform(active_player.position + platform_offset, true)
