@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://b4kvjw1tuluxr"]
+[gd_scene load_steps=3 format=3 uid="uid://b4kvjw1tuluxr"]
 
 [ext_resource type="Script" path="res://Scripts/AboutMenu.gd" id="1_8bacm"]
+[ext_resource type="Texture2D" uid="uid://btgu40rfk4id7" path="res://Art/Images/Cicibela.jpg" id="2_f4yx6"]
 
 [node name="AboutMenu" type="Control"]
 layout_mode = 3
@@ -75,5 +76,19 @@ theme_override_font_sizes/font_size = 12
 text = "Disclaimer: any similarity to actual persons, human or cat, is purely on purpose. 
 No animals were harmed in making of this game."
 horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="."]
+offset_left = 940.0
+offset_top = 378.0
+offset_right = 1000.0
+offset_bottom = 401.0
+text = "Cicibela, our 
+cat model"
+horizontal_alignment = 1
+
+[node name="Cicibela" type="Sprite2D" parent="."]
+position = Vector2(973, 231)
+scale = Vector2(0.143333, 0.143333)
+texture = ExtResource("2_f4yx6")
 
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

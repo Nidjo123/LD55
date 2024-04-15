@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://p65vnr6qys7s"]
+[gd_scene load_steps=16 format=3 uid="uid://p65vnr6qys7s"]
 
 [ext_resource type="Script" path="res://Scripts/Level.gd" id="1_q1wau"]
+[ext_resource type="PackedScene" uid="uid://j8cod5disukg" path="res://Scenes/Level5.tscn" id="2_3hf6f"]
 [ext_resource type="FontFile" uid="uid://chuemkmmvqw7h" path="res://Art/Images/font.png" id="2_sqndf"]
 [ext_resource type="PackedScene" uid="uid://bo2cp4c0wnrbg" path="res://Scenes/Human.tscn" id="3_ba5pq"]
 [ext_resource type="PackedScene" uid="uid://c544yf31jn2wh" path="res://Scenes/Cat.tscn" id="4_sxoly"]
@@ -509,6 +510,7 @@ size = Vector2(327.5, 133)
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_q1wau")
+next_level = ExtResource("2_3hf6f")
 
 [node name="PlatformSummonCooldown" type="Timer" parent="."]
 
