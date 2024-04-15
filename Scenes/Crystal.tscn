@@ -6,23 +6,21 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pbnv1"]
 radius = 12.5
 
-[sub_resource type="Gradient" id="Gradient_p1qjm"]
+[sub_resource type="Gradient" id="Gradient_5eg8r"]
 offsets = PackedFloat32Array(0.181818, 1)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ti8xm"]
-gradient = SubResource("Gradient_p1qjm")
+gradient = SubResource("Gradient_5eg8r")
 fill = 1
 fill_from = Vector2(0.504587, 0.490826)
 fill_to = Vector2(0.178899, 0.917431)
 
-[node name="Crystal" type="Sprite2D" node_paths=PackedStringArray("unlocks")]
+[node name="Crystal" type="Sprite2D"]
 texture_filter = 1
-position = Vector2(1437, 100)
 scale = Vector2(2, 2)
 texture = ExtResource("1_8hg3r")
 script = ExtResource("2_gjwt1")
-unlocks = NodePath("")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 amount = 16

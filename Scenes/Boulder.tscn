@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://b7xgourw8w7ja"]
+[gd_scene load_steps=6 format=3 uid="uid://b7xgourw8w7ja"]
 
 [ext_resource type="Script" path="res://Scenes/Boulder.gd" id="1_upxva"]
 [ext_resource type="Texture2D" uid="uid://j4eykok5fr2h" path="res://Art/Images/boulder.png" id="2_m43xe"]
@@ -7,8 +7,17 @@
 radius = 51.0
 height = 132.0
 
+[sub_resource type="Gradient" id="Gradient_p1qjm"]
+offsets = PackedFloat32Array(0.181818, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_73h40"]
+gradient = SubResource("Gradient_p1qjm")
+fill = 1
+fill_from = Vector2(0.504587, 0.490826)
+fill_to = Vector2(0.178899, 0.917431)
+
 [node name="Boulder" type="StaticBody2D"]
-position = Vector2(1055, 454)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_upxva")
@@ -45,5 +54,73 @@ scale_amount_max = 0.75
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_qw73a")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(10, -7)
+scale = Vector2(0.640625, 0.640625)
+color = Color(0.74902, 0.254902, 0.905882, 1)
+texture = SubResource("GradientTexture2D_73h40")
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+position = Vector2(-25, -24)
+scale = Vector2(0.445312, 0.445312)
+color = Color(0.74902, 0.254902, 0.905882, 1)
+texture = SubResource("GradientTexture2D_73h40")
+
+[node name="PointLight2D" type="PointLight2D" parent="PointLight2D2"]
+position = Vector2(10.9474, 127.719)
+scale = Vector2(1.20175, 1.20175)
+color = Color(0.74902, 0.254902, 0.905882, 1)
+texture = SubResource("GradientTexture2D_73h40")
+
+[node name="PointLight2D" type="PointLight2D" parent="PointLight2D2/PointLight2D"]
+position = Vector2(73.1095, 2.10219)
+scale = Vector2(1.28832, 1.28832)
+color = Color(0.74902, 0.254902, 0.905882, 1)
+texture = SubResource("GradientTexture2D_73h40")
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+position = Vector2(-21, 35)
+amount = 4
+lifetime = 2.0
+randomness = 0.3
+emission_shape = 1
+emission_sphere_radius = 3.0
+gravity = Vector2(0, 10)
+orbit_velocity_min = -0.5
+orbit_velocity_max = 0.5
+
+[node name="CPUParticles2D3" type="CPUParticles2D" parent="."]
+position = Vector2(21, 32)
+amount = 4
+lifetime = 2.0
+randomness = 0.3
+emission_shape = 1
+emission_sphere_radius = 3.0
+gravity = Vector2(0, 10)
+orbit_velocity_min = -0.5
+orbit_velocity_max = 0.5
+
+[node name="CPUParticles2D4" type="CPUParticles2D" parent="."]
+position = Vector2(8, -6)
+amount = 4
+lifetime = 2.0
+randomness = 0.3
+emission_shape = 1
+emission_sphere_radius = 3.0
+gravity = Vector2(0, 10)
+orbit_velocity_min = -0.5
+orbit_velocity_max = 0.5
+
+[node name="CPUParticles2D5" type="CPUParticles2D" parent="."]
+position = Vector2(-21, -23)
+amount = 4
+lifetime = 2.0
+randomness = 0.3
+emission_shape = 1
+emission_sphere_radius = 3.0
+gravity = Vector2(0, 10)
+orbit_velocity_min = -0.5
+orbit_velocity_max = 0.5
 
 [connection signal="unlocked" from="." to="." method="_on_unlocked"]

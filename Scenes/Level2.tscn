@@ -595,6 +595,7 @@ position = Vector2(1180, 227)
 unlocks = NodePath("../Boulder")
 
 [node name="Boulder" parent="." instance=ExtResource("9_8sor4")]
+position = Vector2(1043, 454)
 
 [connection signal="timeout" from="PlatformSummonCooldown" to="." method="_on_platform_summon_cooldown_timeout"]
 [connection signal="timeout" from="PlatformSpawnTimer" to="." method="_on_timer_timeout"]
