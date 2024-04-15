@@ -6,6 +6,8 @@ func _ready():
 
 
 func _on_play_button_pressed():
+	var music = get_node('/root/MusicTheme')
+	music.play()
 	get_tree().change_scene_to_file("res://Scenes/Level.tscn")
 
 
