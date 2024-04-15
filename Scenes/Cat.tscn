@@ -1,9 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://c544yf31jn2wh"]
+[gd_scene load_steps=19 format=3 uid="uid://c544yf31jn2wh"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_q6o8g"]
 [ext_resource type="Texture2D" uid="uid://it3ttr56u1k" path="res://Art/Images/cicibela_template.png" id="2_phefy"]
 [ext_resource type="Texture2D" uid="uid://7dx1dvt5r8nh" path="res://Art/Images/cicibela_walk.png" id="3_3xylw"]
 [ext_resource type="Texture2D" uid="uid://cfftx5636x87d" path="res://Art/Images/cicibela_jump.png" id="3_k1mbo"]
+[ext_resource type="AudioStream" uid="uid://8jfh8guoiywn" path="res://Art/Audio/cat_walk.wav" id="5_xatb6"]
+[ext_resource type="AudioStream" uid="uid://qtni4jfs8s7q" path="res://Art/Audio/cat_land.wav" id="6_cl446"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aytyd"]
 radius = 9.0
@@ -123,3 +125,14 @@ speed_scale = 1.5
 
 [node name="Camera2D" type="Camera2D" parent="."]
 editor_draw_limits = true
+
+[node name="WalkSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_xatb6")
+volume_db = -17.829
+autoplay = true
+stream_paused = true
+
+[node name="LandSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_cl446")
+volume_db = -25.0
+autoplay = true

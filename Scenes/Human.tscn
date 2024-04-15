@@ -1,9 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://bo2cp4c0wnrbg"]
+[gd_scene load_steps=19 format=3 uid="uid://bo2cp4c0wnrbg"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_lsu4g"]
 [ext_resource type="Texture2D" uid="uid://ccrvahu0vxeqk" path="res://Art/Images/nidja_jump.png" id="2_3n5ts"]
 [ext_resource type="Texture2D" uid="uid://hyl4bhxun347" path="res://Art/Images/nidja_walk.png" id="3_d1vbk"]
 [ext_resource type="Texture2D" uid="uid://vduxffpgtfhb" path="res://Art/Images/nidja_fall.png" id="3_vf0x7"]
+[ext_resource type="AudioStream" uid="uid://ckeqlud27c2h3" path="res://Art/Audio/human_walk.wav" id="5_p5vq6"]
+[ext_resource type="AudioStream" uid="uid://qtni4jfs8s7q" path="res://Art/Audio/cat_land.wav" id="6_d8i42"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aytyd"]
 radius = 7.0
@@ -121,3 +123,14 @@ speed_scale = 1.5
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_speed = 1.0
+
+[node name="WalkSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_p5vq6")
+volume_db = -5.0
+autoplay = true
+stream_paused = true
+
+[node name="LandSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_d8i42")
+volume_db = -10.0
+autoplay = true

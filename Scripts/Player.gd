@@ -36,6 +36,9 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 	
+	if $AnimatedSprite2D.animation == "fall" and is_on_floor():
+		$LandSound.play()
+	
 	var animation_name = "default"
 	if not is_on_floor():
 		animation_name = "jump" if velocity.y < 0 else "fall"
@@ -44,6 +47,8 @@ func _physics_process(delta):
 
 	if $AnimatedSprite2D.animation != animation_name:
 		$AnimatedSprite2D.play(animation_name)
+		
+	$WalkSound.stream_paused = not ($AnimatedSprite2D.animation == "walk" and is_on_floor())
 
 	move_and_slide()
 
