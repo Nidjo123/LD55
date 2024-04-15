@@ -3,6 +3,7 @@ extends Node2D
 
 @export var platform_summon_cooldown: float = 1.0
 @export var next_level: PackedScene
+@export var music_stream: AudioStream
 
 var can_summon_platform = true
 
@@ -13,6 +14,15 @@ func _ready():
 		$Cat/Camera2D.make_current()
 	elif $Human.active:
 		$Human/Camera2D.make_current()
+		
+	_update_music()
+
+
+func _update_music():
+	if music_stream:
+		var music_node = get_node("/root/MusicTheme")
+		music_node.stream = music_stream
+		music_node.play()
 
 
 func add_platform(at_pos, summoned_by_user=false):
