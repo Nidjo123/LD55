@@ -565,6 +565,7 @@ layer_0/tile_data = PackedInt32Array(196606, 262144, 1, 196607, 655360, 0, 13107
 [node name="Platform" parent="." instance=ExtResource("6_p3x0s")]
 visible = false
 position = Vector2(-1064, -236)
+collision_mask = 1
 
 [node name="ExitArea" type="Area2D" parent="."]
 position = Vector2(3627, 350)
