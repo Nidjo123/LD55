@@ -1,0 +1,528 @@
+[gd_scene load_steps=13 format=3 uid="uid://bfcigvcskbql7"]
+
+[ext_resource type="Script" path="res://Scripts/FinalLevel.gd" id="1_mnuy1"]
+[ext_resource type="PackedScene" uid="uid://dm4a88gqh5kvr" path="res://Scenes/End.tscn" id="2_82yt4"]
+[ext_resource type="Script" path="res://Scripts/FinalPlatform.gd" id="4_aaw6q"]
+[ext_resource type="Script" path="res://Scenes/FinalPlatform.gd" id="4_oejn1"]
+[ext_resource type="FontFile" uid="uid://chuemkmmvqw7h" path="res://Art/Images/font.png" id="4_q8fw3"]
+[ext_resource type="PackedScene" uid="uid://c544yf31jn2wh" path="res://Scenes/Cat.tscn" id="6_4xb34"]
+[ext_resource type="PackedScene" uid="uid://ddirawafuvdg6" path="res://Scenes/MovablePlatform.tscn" id="7_km5mu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_arj1l"]
+shadow_color = Color(0.0588235, 0.14902, 0.176471, 0.803922)
+
+[sub_resource type="Gradient" id="Gradient_vaa6o"]
+offsets = PackedFloat32Array(0, 0.373333, 1)
+colors = PackedColorArray(1, 0, 0, 1, 0.99371, 0.169877, 0.133274, 1, 0.649654, 0.649592, 0, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_auvkv"]
+normal = Vector2(1, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b36dd"]
+size = Vector2(100, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0b4aj"]
+size = Vector2(100.875, 29.375)
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_mnuy1")
+next_level = ExtResource("2_82yt4")
+
+[node name="PlatformSummonCooldown" type="Timer" parent="."]
+
+[node name="StartLabel" type="Label" parent="."]
+offset_left = -171.0
+offset_top = -63.0
+offset_right = 357.0
+offset_bottom = -28.0
+theme_override_fonts/font = ExtResource("4_q8fw3")
+text = "DON'T FALL INTO THE CRYSTAL FIRE!"
+label_settings = SubResource("LabelSettings_arj1l")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Cat" parent="." instance=ExtResource("6_4xb34")]
+position = Vector2(87, 212)
+active = true
+can_summon_platform = true
+
+[node name="PlatformSpawnTimer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="WorldLeft" type="Area2D" parent="."]
+position = Vector2(-1229, 191)
+collision_mask = 3
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="WorldLeft"]
+position = Vector2(789, -90)
+amount = 256
+speed_scale = 2.0
+explosiveness = 0.2
+lifetime_randomness = 0.27
+emission_shape = 3
+emission_rect_extents = Vector2(10, 300)
+gravity = Vector2(200, 0)
+orbit_velocity_min = -0.05
+orbit_velocity_max = 0.05
+tangential_accel_min = -30.0
+tangential_accel_max = 30.0
+scale_amount_min = 0.75
+scale_amount_max = 3.0
+color = Color(0.682353, 0.192157, 0.164706, 1)
+color_ramp = SubResource("Gradient_vaa6o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldLeft"]
+position = Vector2(770, -49)
+shape = SubResource("WorldBoundaryShape2D_auvkv")
+
+[node name="WorldRight" type="Area2D" parent="."]
+position = Vector2(662, 108)
+rotation = 3.14159
+collision_mask = 3
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="WorldRight"]
+position = Vector2(-22.9999, -30.0001)
+rotation = -0.0190064
+shape = SubResource("WorldBoundaryShape2D_auvkv")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="WorldRight"]
+amount = 256
+speed_scale = 2.0
+explosiveness = 0.2
+lifetime_randomness = 0.27
+emission_shape = 3
+emission_rect_extents = Vector2(10, 300)
+gravity = Vector2(-200, 0)
+orbit_velocity_min = -0.05
+orbit_velocity_max = 0.05
+tangential_accel_min = -30.0
+tangential_accel_max = 30.0
+scale_amount_min = 0.75
+scale_amount_max = 3.0
+color = Color(0.682353, 0.192157, 0.164706, 1)
+color_ramp = SubResource("Gradient_vaa6o")
+
+[node name="WorldTop" type="Area2D" parent="."]
+position = Vector2(85, -210)
+rotation = 7.84867
+collision_mask = 3
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="WorldTop"]
+position = Vector2(-37.9304, -13.2017)
+rotation = -0.00308567
+shape = SubResource("WorldBoundaryShape2D_auvkv")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="WorldTop"]
+position = Vector2(0.159304, -29.9996)
+amount = 256
+speed_scale = 2.0
+explosiveness = 0.2
+lifetime_randomness = 0.27
+emission_shape = 3
+emission_rect_extents = Vector2(10, 500)
+gravity = Vector2(0, 200)
+orbit_velocity_min = -0.05
+orbit_velocity_max = 0.05
+tangential_accel_min = -30.0
+tangential_accel_max = 30.0
+scale_amount_min = 0.75
+scale_amount_max = 3.0
+color = Color(0.682353, 0.192157, 0.164706, 1)
+color_ramp = SubResource("Gradient_vaa6o")
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="WorldTop"]
+position = Vector2(608.087, -14.7703)
+amount = 256
+speed_scale = 2.0
+explosiveness = 0.2
+lifetime_randomness = 0.27
+emission_shape = 3
+emission_rect_extents = Vector2(10, 500)
+gravity = Vector2(0, 200)
+orbit_velocity_min = -0.05
+orbit_velocity_max = 0.05
+tangential_accel_min = -30.0
+tangential_accel_max = 30.0
+scale_amount_min = 0.75
+scale_amount_max = 3.0
+color = Color(0.682353, 0.192157, 0.164706, 1)
+color_ramp = SubResource("Gradient_vaa6o")
+
+[node name="WorldBottom" type="Area2D" parent="."]
+position = Vector2(85, -210)
+rotation = 7.84867
+collision_mask = 3
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="WorldBottom"]
+position = Vector2(649.964, 8.45235)
+rotation = -3.13216
+scale = Vector2(1, 1)
+shape = SubResource("WorldBoundaryShape2D_auvkv")
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="WorldBottom"]
+position = Vector2(608.087, -14.7703)
+amount = 256
+speed_scale = 2.0
+explosiveness = 0.2
+lifetime_randomness = 0.27
+emission_shape = 3
+emission_rect_extents = Vector2(10, 500)
+gravity = Vector2(0, -200)
+orbit_velocity_min = -0.05
+orbit_velocity_max = 0.05
+tangential_accel_min = -30.0
+tangential_accel_max = 30.0
+scale_amount_min = 0.75
+scale_amount_max = 3.0
+color = Color(0.682353, 0.192157, 0.164706, 1)
+color_ramp = SubResource("Gradient_vaa6o")
+
+[node name="FirstPlatform" type="AnimatableBody2D" parent="."]
+position = Vector2(83, 267)
+script = ExtResource("4_aaw6q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FirstPlatform"]
+shape = SubResource("RectangleShape2D_b36dd")
+
+[node name="ColorRect" type="ColorRect" parent="FirstPlatform/CollisionShape2D"]
+offset_left = -50.0
+offset_top = -10.0
+offset_right = 50.0
+offset_bottom = 10.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.309804, 0.607843, 0.729412, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Platform3" type="AnimatableBody2D" parent="."]
+position = Vector2(756, 157)
+script = ExtResource("4_oejn1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform3"]
+shape = SubResource("RectangleShape2D_b36dd")
+
+[node name="ColorRect" type="ColorRect" parent="Platform3/CollisionShape2D"]
+offset_left = -50.0
+offset_top = -10.0
+offset_right = 50.0
+offset_bottom = 10.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.309804, 0.607843, 0.729412, 1)
+
+[node name="Platform4" type="AnimatableBody2D" parent="."]
+position = Vector2(953, 117)
+script = ExtResource("4_oejn1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform4"]
+shape = SubResource("RectangleShape2D_b36dd")
+
+[node name="ColorRect" type="ColorRect" parent="Platform4/CollisionShape2D"]
+offset_left = -50.0
+offset_top = -10.0
+offset_right = 50.0
+offset_bottom = 10.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.309804, 0.607843, 0.729412, 1)
+
+[node name="Platform5" type="AnimatableBody2D" parent="."]
+position = Vector2(1192, 49)
+script = ExtResource("4_oejn1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform5"]
+shape = SubResource("RectangleShape2D_b36dd")
+
+[node name="ColorRect" type="ColorRect" parent="Platform5/CollisionShape2D"]
+offset_left = -50.0
+offset_top = -10.0
+offset_right = 50.0
+offset_bottom = 10.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.309804, 0.607843, 0.729412, 1)
+
+[node name="Platform6" type="AnimatableBody2D" parent="."]
+position = Vector2(1427, 142)
+script = ExtResource("4_oejn1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform6"]
+shape = SubResource("RectangleShape2D_b36dd")
+
+[node name="ColorRect" type="ColorRect" parent="Platform6/CollisionShape2D"]
+offset_left = -50.0
+offset_top = -10.0
+offset_right = 50.0
+offset_bottom = 10.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.309804, 0.607843, 0.729412, 1)
+
+[node name="Platform7" type="AnimatableBody2D" parent="."]
+position = Vector2(1709, 145)
+script = ExtResource("4_oejn1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform7"]
+shape = SubResource("RectangleShape2D_b36dd")
+
+[node name="ColorRect" type="ColorRect" parent="Platform7/CollisionShape2D"]
+offset_left = -50.0
+offset_top = -10.0
+offset_right = 50.0
+offset_bottom = 10.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.309804, 0.607843, 0.729412, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Platform8" type="AnimatableBody2D" parent="."]
+position = Vector2(1889, 300)
+script = ExtResource("4_oejn1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform8"]
+shape = SubResource("RectangleShape2D_b36dd")
+
+[node name="ColorRect" type="ColorRect" parent="Platform8/CollisionShape2D"]
+offset_left = -50.0
+offset_top = -10.0
+offset_right = 50.0
+offset_bottom = 10.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.309804, 0.607843, 0.729412, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Platform9" type="AnimatableBody2D" parent="."]
+position = Vector2(2046, 296)
+script = ExtResource("4_oejn1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform9"]
+shape = SubResource("RectangleShape2D_b36dd")
+
+[node name="ColorRect" type="ColorRect" parent="Platform9/CollisionShape2D"]
+offset_left = -50.0
+offset_top = -10.0
+offset_right = 50.0
+offset_bottom = 10.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.309804, 0.607843, 0.729412, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Platform10" type="AnimatableBody2D" parent="."]
+position = Vector2(2188, 294)
+script = ExtResource("4_oejn1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform10"]
+shape = SubResource("RectangleShape2D_b36dd")
+
+[node name="ColorRect" type="ColorRect" parent="Platform10/CollisionShape2D"]
+offset_left = -50.0
+offset_top = -10.0
+offset_right = 50.0
+offset_bottom = 10.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.309804, 0.607843, 0.729412, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Platform11" type="AnimatableBody2D" parent="."]
+position = Vector2(2389, 197)
+script = ExtResource("4_oejn1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform11"]
+shape = SubResource("RectangleShape2D_b36dd")
+
+[node name="ColorRect" type="ColorRect" parent="Platform11/CollisionShape2D"]
+offset_left = -50.0
+offset_top = -10.0
+offset_right = 50.0
+offset_bottom = 10.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.309804, 0.607843, 0.729412, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Platform12" type="AnimatableBody2D" parent="."]
+position = Vector2(2548, 108)
+script = ExtResource("4_oejn1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform12"]
+shape = SubResource("RectangleShape2D_b36dd")
+
+[node name="ColorRect" type="ColorRect" parent="Platform12/CollisionShape2D"]
+offset_left = -50.0
+offset_top = -10.0
+offset_right = 50.0
+offset_bottom = 10.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.309804, 0.607843, 0.729412, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Platform13" type="AnimatableBody2D" parent="."]
+position = Vector2(2688, 36)
+script = ExtResource("4_oejn1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform13"]
+shape = SubResource("RectangleShape2D_b36dd")
+
+[node name="ColorRect" type="ColorRect" parent="Platform13/CollisionShape2D"]
+offset_left = -50.0
+offset_top = -10.0
+offset_right = 50.0
+offset_bottom = 10.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.309804, 0.607843, 0.729412, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Platform14" type="AnimatableBody2D" parent="."]
+position = Vector2(2838, 110)
+script = ExtResource("4_oejn1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform14"]
+shape = SubResource("RectangleShape2D_b36dd")
+
+[node name="ColorRect" type="ColorRect" parent="Platform14/CollisionShape2D"]
+offset_left = -50.0
+offset_top = -10.0
+offset_right = 50.0
+offset_bottom = 10.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.309804, 0.607843, 0.729412, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Platform15" type="AnimatableBody2D" parent="."]
+position = Vector2(2991, 186)
+script = ExtResource("4_oejn1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform15"]
+shape = SubResource("RectangleShape2D_b36dd")
+
+[node name="ColorRect" type="ColorRect" parent="Platform15/CollisionShape2D"]
+offset_left = -50.0
+offset_top = -10.0
+offset_right = 50.0
+offset_bottom = 10.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.309804, 0.607843, 0.729412, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Platform16" type="AnimatableBody2D" parent="."]
+position = Vector2(3218, 33)
+script = ExtResource("4_oejn1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform16"]
+shape = SubResource("RectangleShape2D_b36dd")
+
+[node name="ColorRect" type="ColorRect" parent="Platform16/CollisionShape2D"]
+offset_left = -50.0
+offset_top = -10.0
+offset_right = 50.0
+offset_bottom = 10.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.309804, 0.607843, 0.729412, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Platform17" type="AnimatableBody2D" parent="."]
+position = Vector2(3366, 196)
+script = ExtResource("4_oejn1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform17"]
+shape = SubResource("RectangleShape2D_b36dd")
+
+[node name="ColorRect" type="ColorRect" parent="Platform17/CollisionShape2D"]
+offset_left = -50.0
+offset_top = -10.0
+offset_right = 50.0
+offset_bottom = 10.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.309804, 0.607843, 0.729412, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Platform18" type="AnimatableBody2D" parent="."]
+position = Vector2(4182, 190)
+script = ExtResource("4_oejn1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform18"]
+shape = SubResource("RectangleShape2D_b36dd")
+
+[node name="ColorRect" type="ColorRect" parent="Platform18/CollisionShape2D"]
+offset_left = -50.0
+offset_top = -10.0
+offset_right = 50.0
+offset_bottom = 10.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.309804, 0.607843, 0.729412, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Platform19" type="AnimatableBody2D" parent="."]
+position = Vector2(4932, 110)
+script = ExtResource("4_oejn1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform19"]
+shape = SubResource("RectangleShape2D_b36dd")
+
+[node name="ColorRect" type="ColorRect" parent="Platform19/CollisionShape2D"]
+offset_left = -50.0
+offset_top = -10.0
+offset_right = 50.0
+offset_bottom = 10.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.309804, 0.607843, 0.729412, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="LastPlatform" type="AnimatableBody2D" parent="."]
+position = Vector2(5538, 101)
+script = ExtResource("4_oejn1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LastPlatform"]
+shape = SubResource("RectangleShape2D_b36dd")
+
+[node name="ColorRect" type="ColorRect" parent="LastPlatform/CollisionShape2D"]
+offset_left = -50.0
+offset_top = -10.0
+offset_right = 50.0
+offset_bottom = 10.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.168627, 0.662745, 0.443137, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="ExitArea" type="Area2D" parent="LastPlatform"]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LastPlatform/ExitArea"]
+position = Vector2(0, -24)
+shape = SubResource("RectangleShape2D_0b4aj")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="LastPlatform/ExitArea"]
+position = Vector2(-1, -9)
+amount = 32
+lifetime = 3.0
+lifetime_randomness = 0.1
+emission_shape = 3
+emission_rect_extents = Vector2(50, 2)
+direction = Vector2(0, 1)
+gravity = Vector2(-20, -10)
+initial_velocity_max = 1.0
+damping_max = 6.061
+
+[node name="Platform" parent="." instance=ExtResource("7_km5mu")]
+position = Vector2(-1707, -352)
+
+[connection signal="timeout" from="PlatformSummonCooldown" to="." method="_on_platform_summon_cooldown_timeout"]
+[connection signal="timeout" from="PlatformSpawnTimer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="WorldLeft" to="." method="_on_world_limit_exited"]
+[connection signal="body_entered" from="WorldRight" to="." method="_on_world_limit_exited"]
+[connection signal="body_entered" from="WorldTop" to="." method="_on_world_limit_exited"]
+[connection signal="body_entered" from="WorldBottom" to="." method="_on_world_limit_exited"]
+[connection signal="body_exited" from="WorldBottom" to="." method="_on_world_limit_exited"]
+[connection signal="body_entered" from="LastPlatform/ExitArea" to="." method="_on_exit_area_body_entered"]

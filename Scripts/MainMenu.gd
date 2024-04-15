@@ -9,10 +9,7 @@ func _ready():
 
 
 func _on_play_button_pressed():
-	var music = get_node('/root/MusicTheme')
-	music.stream = load("res://Art/Audio/theme.wav")
-	music.play()
-	get_tree().change_scene_to_file("res://Scenes/Level.tscn")
+	get_tree().change_scene_to_file("res://Scenes/StartScene.tscn")
 
 
 func _on_exit_button_pressed():

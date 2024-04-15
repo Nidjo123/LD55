@@ -1,0 +1,61 @@
+[gd_scene load_steps=2 format=3 uid="uid://uonc8ac4a4nv"]
+
+[ext_resource type="Script" path="res://Scripts/StartScene.gd" id="1_njnb5"]
+
+[node name="Beginning" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_njnb5")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.180392, 0.180392, 0.180392, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "It is a calm spring afternoon.
+
+There is a cat sleeping on a chair. Her name is Cicibela.
+ She is magical. And a bit funky at times.
+
+Everything that happens here is inside her dream.
+
+"
+horizontal_alignment = 1
+
+[node name="BeginButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -26.0
+offset_top = -209.0
+offset_right = 26.0
+offset_bottom = -178.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Begin"
+
+[connection signal="pressed" from="BeginButton" to="." method="_on_begin_button_pressed"]

@@ -1,0 +1,104 @@
+[gd_scene load_steps=9 format=3 uid="uid://dm4a88gqh5kvr"]
+
+[ext_resource type="Script" path="res://Scenes/EndMenu.gd" id="1_8app0"]
+[ext_resource type="AudioStream" uid="uid://c3rka0mumc1pb" path="res://Art/Audio/endtheme.wav" id="2_upcar"]
+[ext_resource type="Texture2D" uid="uid://it3ttr56u1k" path="res://Art/Images/cicibela_template.png" id="3_62qle"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8s3of"]
+atlas = ExtResource("3_62qle")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rgasj"]
+atlas = ExtResource("3_62qle")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_evvau"]
+atlas = ExtResource("3_62qle")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ifvb"]
+atlas = ExtResource("3_62qle")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_56bi6"]
+animations = [{
+"frames": [{
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_8s3of")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rgasj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_evvau")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ifvb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="EndScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8app0")
+music_stream = ExtResource("2_upcar")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.180392, 0.180392, 0.180392, 1)
+
+[node name="MainMenuButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -48.0
+offset_top = -118.0
+offset_right = 48.0
+offset_bottom = -87.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Main Menu
+"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -223.5
+offset_top = -97.5
+offset_right = 223.5
+offset_bottom = 3.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Cicibela, the cat, suddenly woke up. 
+She heard a door bell ring. 
+
+It was Dzadza007 coming so we can begin Ludum Dare 55."
+horizontal_alignment = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(582, 424)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_56bi6")
+autoplay = "default"
+
+[connection signal="pressed" from="MainMenuButton" to="." method="_on_main_menu_button_pressed"]
